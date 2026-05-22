@@ -2,12 +2,45 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
-        <add id="ETechFlow_ShippingTableRates::manage"
+        <!-- Shared eTechFlow top-level — declared identically by every
+             eTechFlow module so Magento merges to one sidebar entry.
+             See reference_etechflow_menu_convention. -->
+        <add id="eTechFlow::root"
+             title="eTechFlow"
+             module="ETechFlow_ShippingTableRates"
+             sortOrder="68"
+             resource="Magento_Backend::admin"/>
+
+        <add id="eTechFlow::settings"
+             title="Settings"
+             module="ETechFlow_ShippingTableRates"
+             sortOrder="500"
+             parent="eTechFlow::root"
+             resource="Magento_Backend::admin"/>
+
+        <add id="eTechFlow::configuration"
+             title="Configuration"
+             module="ETechFlow_ShippingTableRates"
+             sortOrder="10"
+             parent="eTechFlow::settings"
+             action="adminhtml/system_config/edit/section/etechflow_shippingtablerates"
+             resource="Magento_Config::config"/>
+
+        <!-- Shipping Table Rates column. Previously parented under
+             Magento_Sales::operations. -->
+        <add id="ETechFlow_ShippingTableRates::root"
              title="Shipping Table Rates"
              module="ETechFlow_ShippingTableRates"
-             sortOrder="60"
-             resource="ETechFlow_ShippingTableRates::manage"
-             parent="Magento_Sales::operations"
-             action="etechflow_str/method/index"/>
+             sortOrder="40"
+             parent="eTechFlow::root"
+             resource="ETechFlow_ShippingTableRates::manage"/>
+
+        <add id="ETechFlow_ShippingTableRates::manage"
+             title="Methods"
+             module="ETechFlow_ShippingTableRates"
+             sortOrder="10"
+             parent="ETechFlow_ShippingTableRates::root"
+             action="etechflow_str/method/index"
+             resource="ETechFlow_ShippingTableRates::manage"/>
     </menu>
 </config>

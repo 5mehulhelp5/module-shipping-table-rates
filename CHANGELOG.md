@@ -4,6 +4,27 @@ All notable changes to this module. Adheres to [Semantic Versioning](https://sem
 
 ---
 
+## [1.1.1] — 2026-05-22 — Move admin menu under eTechFlow top-level sidebar
+
+### Changed
+
+- **STR admin pages relocated to a dedicated "eTechFlow" sidebar entry.** Previously the Methods list lived under `Sales → Operations`. Now it sits as a `Shipping Table Rates` column inside a new top-level `eTechFlow` sidebar entry (clusters with other paid-extension vendors above Magento's Stores). Matches the pattern Amasty / Magefan / MageWorx use.
+- Each eTechFlow module declares the same `eTechFlow::root` + `eTechFlow::settings` + `eTechFlow::configuration` entries — Magento merges by id, so installing N modules still produces exactly one `eTechFlow` sidebar group.
+
+### Migration
+
+```
+composer update etechflow/module-shipping-table-rates
+bin/magento setup:upgrade
+bin/magento setup:di:compile
+bin/magento setup:static-content:deploy -f
+bin/magento cache:flush
+```
+
+Admin URL routes unchanged (`etechflow_str/method/index` still works). No schema or behaviour changes — pure menu-layout adjustment.
+
+---
+
 ## [1.1.0] — 2026-05-17 — Amasty parity pass
 
 Closes the seven-feature gap STR had against Amasty Shipping Table Rates ($229–$829/yr) as documented in Amasty's 2022-10 user guide. After this release, STR matches Amasty's feature surface and keeps the four admin-UX differentiators no competitor offers: live cart simulator, versioned rate sets with one-click rollback, on-save conflict detection, and human-readable CSV columns.
