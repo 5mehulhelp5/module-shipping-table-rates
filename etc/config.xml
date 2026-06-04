@@ -21,6 +21,7 @@
                 <use_discounted_price>1</use_discounted_price>
                 <price_includes_tax>0</price_includes_tax>
                 <conflict_detection>1</conflict_detection>
+                <flatrate_behavior>smart_fallback</flatrate_behavior>
             </general>
         </etechflow_shippingtablerates>
 

@@ -236,6 +236,30 @@
                         thousands of rules). Conflicts will then only surface at the live cart.
                     ]]></comment>
                 </field>
+                <field id="flatrate_behavior"
+                       translate="label comment"
+                       type="select"
+                       sortOrder="50"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+                    <label>Flat Rate Behavior</label>
+                    <source_model>ETechFlow\ShippingTableRates\Model\Config\Source\FlatrateBehavior</source_model>
+                    <comment><![CDATA[
+                        Controls whether Magento's built-in <strong>Flat Rate</strong> carrier
+                        shows up at checkout alongside STR's calculated rates.<br/><br/>
+                        <strong>Smart fallback (default)</strong> = Flat Rate is shown ONLY when STR
+                        has no matching rule for the cart (e.g. customer in an unsupported country).
+                        Otherwise STR is the only carrier visible. This is what most merchants want —
+                        STR wins where it has an answer, Flat Rate covers the gaps.<br/><br/>
+                        <strong>Never show</strong> = Flat Rate is hidden whenever STR is enabled,
+                        even if STR has no matching rule. Use this if you want STR to be the ONLY
+                        carrier and prefer "no shipping available" over a $5 fallback for unsupported carts.<br/><br/>
+                        <strong>Always show</strong> = original Magento behavior — Flat Rate runs
+                        alongside STR. Customers see both options and pick the cheaper one (which
+                        usually means STR's rules are bypassed).
+                    ]]></comment>
+                </field>
             </group>
         </section>
 
