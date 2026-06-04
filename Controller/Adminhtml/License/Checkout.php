@@ -25,11 +25,11 @@ class Checkout extends Action
     private const XML_STRIPE_SECRET = 'etechflow_shippingtablerates/payment/stripe_secret_key';
     private const XML_STRIPE_CURR   = 'etechflow_shippingtablerates/payment/stripe_currency';
 
-    /** Plan slugs -> [name, amount in cents, display]. Tier-based plans matching BED/NDE/BISN. */
+    /** Plan slugs -> [name, amount in cents, display]. Billing-period model (weekly/monthly/yearly). */
     private const PLAN_INFO = [
-        'str_starter'      => ['name' => 'Shipping Table Rates — Starter',      'amount' => 1900, 'display' => '$19/month'],
-        'str_professional' => ['name' => 'Shipping Table Rates — Professional', 'amount' => 4900, 'display' => '$49/month'],
-        'str_enterprise'   => ['name' => 'Shipping Table Rates — Enterprise',   'amount' => 9900, 'display' => '$99/month'],
+        'str_weekly'  => ['name' => 'Shipping Table Rates — Weekly',  'amount' => 900,   'display' => '$9/week'],
+        'str_monthly' => ['name' => 'Shipping Table Rates — Monthly', 'amount' => 2900,  'display' => '$29/month'],
+        'str_yearly'  => ['name' => 'Shipping Table Rates — Yearly',  'amount' => 29000, 'display' => '$290/year'],
     ];
 
     public function __construct(
