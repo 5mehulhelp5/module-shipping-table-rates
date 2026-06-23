@@ -26,4 +26,11 @@
                 type="ETechFlow\ShippingTableRates\Plugin\Adminhtml\LicenseGatePlugin"
                 sortOrder="10"/>
     </type>
+    <!-- Self-contained shared-menu provider: injects eTechFlow::root idempotently
+         so this module needs no other eTechFlow module and never declares the
+         shared menu id in XML. See Plugin/Adminhtml/EnsureEtechflowMenu.php. -->
+    <type name="Magento\Backend\Model\Menu\Builder">
+        <plugin name="etechflow_shippingtablerates_ensure_root_menu"
+                type="ETechFlow\ShippingTableRates\Plugin\Adminhtml\EnsureEtechflowMenu"/>
+    </type>
 </config>
